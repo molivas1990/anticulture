@@ -1,0 +1,6 @@
+name = igzitor
+weight = 30
+integrity = 50
+healing = -0.3
+lifespan = 200
+successor = mineral

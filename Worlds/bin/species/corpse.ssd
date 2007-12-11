@@ -5,4 +5,4 @@ healing = -0.5
 nutrition = 8
 hydration = 1
 lifespan = 35
-successor = decomposition
+successor = decomposition, skeleton
