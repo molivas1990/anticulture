@@ -105,7 +105,7 @@ namespace AntiCulture.Worlds.Operations
                 {
                     if (solution.Prototype == mBestSolution.Prototype)
                     {
-                        mBestSolution.Effectiveness = solution.Effectiveness;
+                        mBestSolution.Effectiveness = solution.Effectiveness * ExperienceValue;
                         found = true;
                     }
                 }
