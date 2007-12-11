@@ -130,23 +130,29 @@ namespace AntiCulture.Worlds
 
         private void RunBatchFile(string FileName)
         {
-            System.IO.FileStream Stream = new System.IO.FileStream(FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            System.IO.TextReader Reader = new System.IO.StreamReader(Stream);
-
-
-
-
-            string Contents = Reader.ReadToEnd();
-
-
-
-            string[] Lines = Contents.Split('\n','\r');
-
-
-            foreach (string Line in Lines)
+            try
             {
-                Console.WriteLine(Line);
-                ExecuteCommand(Line);
+                System.IO.FileStream Stream = new System.IO.FileStream(FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                System.IO.TextReader Reader = new System.IO.StreamReader(Stream);
+
+
+                string Contents = Reader.ReadToEnd();
+
+
+
+                string[] Lines = Contents.Split('\n','\r');
+
+
+                foreach (string Line in Lines)
+                {
+                    Console.WriteLine(Line);
+                    ExecuteCommand(Line);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Failed to open file \"" + FileName + "\" : " + e.Message);
+                return;
             }
         }
 
@@ -222,7 +228,7 @@ namespace AntiCulture.Worlds
                 }
             }
             #endregion
-            #region RunBatch command
+            #region runbatch command
             else if (command == "runbatch")
             {
                 if (arguments.Length == 1)
@@ -407,6 +413,26 @@ namespace AntiCulture.Worlds
                 }
             }
             #endregion
+            #region speed command
+            else if (command == "speed")
+            {
+                if (arguments.Length == 1)
+                {
+                    try
+                    {
+                        mTimer.TimeSpeed = float.Parse(arguments[0], System.Globalization.NumberFormatInfo.InvariantInfo);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Argument isn't a floating-point number");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The \"speed\" command takes one argument");
+                }
+            }
+                #endregion
             #region unknown command
             else
             {

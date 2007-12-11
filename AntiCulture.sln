@@ -9,8 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds", "Worlds\Worlds.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds.Plugins.XnaGraphics", "Worlds\Plugins\XnaGraphics\Worlds.Plugins.XnaGraphics.csproj", "{6FA2EF8E-21B2-4201-A2A0-85D08859D42F}"
 EndProject
+<<<<<<< .mine
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comic", "Worlds\Plugins\Comic\Comic.csproj", "{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}"
+EndProject
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds.Plugins.MotherNature", "Worlds\Plugins\MotherNature\Worlds.Plugins.MotherNature.csproj", "{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}"
 EndProject
+>>>>>>> .r172
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +66,18 @@ Global
 		{6FA2EF8E-21B2-4201-A2A0-85D08859D42F}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6FA2EF8E-21B2-4201-A2A0-85D08859D42F}.Release|x86.ActiveCfg = Release|x86
 		{6FA2EF8E-21B2-4201-A2A0-85D08859D42F}.Release|x86.Build.0 = Release|x86
+<<<<<<< .mine
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}.Release|x86.ActiveCfg = Release|Any CPU
+=======
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -71,6 +88,7 @@ Global
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}.Release|x86.ActiveCfg = Release|Any CPU
+>>>>>>> .r172
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

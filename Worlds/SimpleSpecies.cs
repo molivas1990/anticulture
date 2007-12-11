@@ -74,6 +74,7 @@ namespace AntiCulture.Worlds
                     string value = operands[1].Trim();
 
                     if (property.Equals("successor", StringComparison.InvariantCultureIgnoreCase)) species.mSuccessor = value;
+                    else if (property.Equals("name", StringComparison.InvariantCultureIgnoreCase)) species.FictionalName = value;
                     else
                     {
                         float floatValue;
