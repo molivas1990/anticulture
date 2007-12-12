@@ -9,10 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds", "Worlds\Worlds.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds.Plugins.XnaGraphics", "Worlds\Plugins\XnaGraphics\Worlds.Plugins.XnaGraphics.csproj", "{6FA2EF8E-21B2-4201-A2A0-85D08859D42F}"
 EndProject
-<<<<<<< .mine
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comic", "Worlds\Plugins\Comic\Comic.csproj", "{DD7118AD-8DAF-4FAF-93B0-CDA8DFEBF0CA}"
 EndProject
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds.Plugins.MotherNature", "Worlds\Plugins\MotherNature\Worlds.Plugins.MotherNature.csproj", "{BA4E94F6-5CA6-402E-B7D0-F6C2EFE955E3}"
 EndProject
 >>>>>>> .r172
