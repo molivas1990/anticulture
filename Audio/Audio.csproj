@@ -4,17 +4,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6FE0A492-5ACD-4AFA-AAEF-C43306CFAC78}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{EF3C7746-19BE-4448-8930-3CABE899C921}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AntiCulture.Audio.Midi</RootNamespace>
-    <AssemblyName>Audio.Midi</AssemblyName>
+    <RootNamespace>AntiCulture.Audio</RootNamespace>
+    <AssemblyName>Audio</AssemblyName>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -22,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,10 +35,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Midi.cs" />
-    <Compile Include="MidiNoteEvent.cs" />
-    <Compile Include="NoteEvent.cs" />
-    <Compile Include="MidiTrack.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="SampleBuffer.cs" />
+    <Compile Include="OpenAl.cs" />
+    <Compile Include="Devices\OpenAlOutput.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="InputSlot.cs" />
+    <Compile Include="OutputSlot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\SimpleWaveGenerator.cs" />
+    <Compile Include="Slot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
