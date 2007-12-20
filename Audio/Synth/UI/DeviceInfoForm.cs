@@ -181,11 +181,11 @@ namespace AntiCulture.Audio.Synth.UI
             if (e.Button != MouseButtons.Left) return;
             RadioButton radioButton = (RadioButton)sender;
             radioButton.DoDragDrop(radioButton, DragDropEffects.Link);
-        }
+        }        
 
-        private void LabelChanged(object sender, EventArgs e)
+        private void Closing(object sender, FormClosingEventArgs e)
         {
-            mDevice.Label = ((TextBox)sender).Text;
+            mDevice.Label = mLabelTextBox.Text;
         }
         #endregion
     }

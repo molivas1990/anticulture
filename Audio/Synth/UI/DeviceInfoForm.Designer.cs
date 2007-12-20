@@ -61,7 +61,6 @@ namespace AntiCulture.Audio.Synth.UI
             this.mLabelTextBox.Name = "mLabelTextBox";
             this.mLabelTextBox.Size = new System.Drawing.Size(333, 20);
             this.mLabelTextBox.TabIndex = 8;
-            this.mLabelTextBox.TextChanged += new System.EventHandler(this.LabelChanged);
             // 
             // mLabelLabel
             // 
@@ -104,6 +103,7 @@ namespace AntiCulture.Audio.Synth.UI
             this.MaximizeBox = false;
             this.Name = "DeviceInfoForm";
             this.Text = "Device information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Closing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
