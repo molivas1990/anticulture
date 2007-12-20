@@ -18,7 +18,11 @@ namespace AntiCulture.Audio.Synth
 
         public string Label
         {
-            get { return mLabel; }
+            get
+            {
+                if (mLabel == null) mLabel = Name + " " + base.GetHashCode().ToString();
+                return mLabel;
+            }
             set { mLabel = value; }
         }
 
@@ -58,14 +62,6 @@ namespace AntiCulture.Audio.Synth
         protected void AddOutputSlot(OutputSlot slot)
         {
             mOutputSlots.Add(slot);
-        }
-        #endregion
-
-        #region System.Object methods
-        public override string ToString()
-        {
-            if (string.IsNullOrEmpty(mLabel)) return Name;
-            return mLabel;
         }
         #endregion
     }

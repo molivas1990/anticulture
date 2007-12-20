@@ -28,35 +28,28 @@ namespace AntiCulture.Audio.Synth.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.mSlotsLabel = new System.Windows.Forms.Label();
-            this.mSlotsListView = new System.Windows.Forms.ListView();
+            this.components = new System.ComponentModel.Container();
+            this.mInputSlotsLabel = new System.Windows.Forms.Label();
             this.mTypeLabel = new System.Windows.Forms.Label();
             this.mLabelTextBox = new System.Windows.Forms.TextBox();
             this.mLabelLabel = new System.Windows.Forms.Label();
+            this.mOutputSlotsLabel = new System.Windows.Forms.Label();
+            this.mToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // mSlotsLabel
+            // mInputSlotsLabel
             // 
-            this.mSlotsLabel.AutoSize = true;
-            this.mSlotsLabel.Location = new System.Drawing.Point(12, 48);
-            this.mSlotsLabel.Name = "mSlotsLabel";
-            this.mSlotsLabel.Size = new System.Drawing.Size(30, 13);
-            this.mSlotsLabel.TabIndex = 4;
-            this.mSlotsLabel.Text = "Slots";
-            // 
-            // mSlotsListView
-            // 
-            this.mSlotsListView.Location = new System.Drawing.Point(15, 64);
-            this.mSlotsListView.Name = "mSlotsListView";
-            this.mSlotsListView.Size = new System.Drawing.Size(498, 182);
-            this.mSlotsListView.TabIndex = 6;
-            this.mSlotsListView.UseCompatibleStateImageBehavior = false;
-            this.mSlotsListView.View = System.Windows.Forms.View.Details;
+            this.mInputSlotsLabel.AutoSize = true;
+            this.mInputSlotsLabel.Location = new System.Drawing.Point(12, 48);
+            this.mInputSlotsLabel.Name = "mInputSlotsLabel";
+            this.mInputSlotsLabel.Size = new System.Drawing.Size(55, 13);
+            this.mInputSlotsLabel.TabIndex = 4;
+            this.mInputSlotsLabel.Text = "Input slots";
             // 
             // mTypeLabel
             // 
             this.mTypeLabel.AutoSize = true;
-            this.mTypeLabel.Location = new System.Drawing.Point(12, 9);
+            this.mTypeLabel.Location = new System.Drawing.Point(12, 6);
             this.mTypeLabel.Name = "mTypeLabel";
             this.mTypeLabel.Size = new System.Drawing.Size(31, 13);
             this.mTypeLabel.TabIndex = 7;
@@ -64,31 +57,50 @@ namespace AntiCulture.Audio.Synth.UI
             // 
             // mLabelTextBox
             // 
-            this.mLabelTextBox.Location = new System.Drawing.Point(53, 25);
+            this.mLabelTextBox.Location = new System.Drawing.Point(51, 24);
             this.mLabelTextBox.Name = "mLabelTextBox";
-            this.mLabelTextBox.Size = new System.Drawing.Size(167, 20);
+            this.mLabelTextBox.Size = new System.Drawing.Size(333, 20);
             this.mLabelTextBox.TabIndex = 8;
             this.mLabelTextBox.TextChanged += new System.EventHandler(this.LabelChanged);
             // 
             // mLabelLabel
             // 
-            this.mLabelLabel.AutoSize = true;
-            this.mLabelLabel.Location = new System.Drawing.Point(12, 28);
+            this.mLabelLabel.Location = new System.Drawing.Point(12, 27);
             this.mLabelLabel.Name = "mLabelLabel";
-            this.mLabelLabel.Size = new System.Drawing.Size(42, 13);
+            this.mLabelLabel.Size = new System.Drawing.Size(38, 13);
             this.mLabelLabel.TabIndex = 9;
             this.mLabelLabel.Text = "Label : ";
+            // 
+            // mOutputSlotsLabel
+            // 
+            this.mOutputSlotsLabel.AutoSize = true;
+            this.mOutputSlotsLabel.Location = new System.Drawing.Point(321, 48);
+            this.mOutputSlotsLabel.Name = "mOutputSlotsLabel";
+            this.mOutputSlotsLabel.Size = new System.Drawing.Size(63, 13);
+            this.mOutputSlotsLabel.TabIndex = 10;
+            this.mOutputSlotsLabel.Text = "Output slots";
+            this.mOutputSlotsLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // mToolTip
+            // 
+            this.mToolTip.AutomaticDelay = 0;
+            this.mToolTip.ShowAlways = true;
+            this.mToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.mToolTip.ToolTipTitle = "Slot description";
+            this.mToolTip.UseAnimation = false;
+            this.mToolTip.UseFading = false;
             // 
             // DeviceInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 262);
+            this.ClientSize = new System.Drawing.Size(394, 262);
+            this.Controls.Add(this.mOutputSlotsLabel);
             this.Controls.Add(this.mLabelLabel);
             this.Controls.Add(this.mLabelTextBox);
             this.Controls.Add(this.mTypeLabel);
-            this.Controls.Add(this.mSlotsListView);
-            this.Controls.Add(this.mSlotsLabel);
+            this.Controls.Add(this.mInputSlotsLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "DeviceInfoForm";
             this.Text = "Device information";
@@ -99,10 +111,11 @@ namespace AntiCulture.Audio.Synth.UI
 
         #endregion
 
-        private System.Windows.Forms.Label mSlotsLabel;
-        private System.Windows.Forms.ListView mSlotsListView;
+        private System.Windows.Forms.Label mInputSlotsLabel;
         private System.Windows.Forms.Label mTypeLabel;
         private System.Windows.Forms.TextBox mLabelTextBox;
+        private System.Windows.Forms.Label mOutputSlotsLabel;
+        private System.Windows.Forms.ToolTip mToolTip;
         private System.Windows.Forms.Label mLabelLabel;
     }
 }
