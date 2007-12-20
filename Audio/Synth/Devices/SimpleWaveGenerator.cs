@@ -17,15 +17,14 @@ namespace AntiCulture.Audio.Synth.Devices
         }
         #endregion
 
-        #region Data members
+        #region Fields
         private OutputSlot mOutputSlot;
         #endregion
 
         #region Constructor
         public SimpleWaveGenerator()
-            : base("Simple Wave Generator")
         {
-            mOutputSlot = OutputSlot.Create<SoundBuffer>(this, "oOutput");
+            mOutputSlot = OutputSlot.Create<SoundBuffer>(this, "Output");
             base.AddOutputSlot(mOutputSlot);
         }
         #endregion
@@ -73,6 +72,13 @@ namespace AntiCulture.Audio.Synth.Devices
             }
 
             mOutputSlot.Send(buffer);
+        }
+        #endregion
+
+        #region Device members
+        public override string Name
+        {
+            get { return "Simple Wave Generator"; }
         }
         #endregion
     }

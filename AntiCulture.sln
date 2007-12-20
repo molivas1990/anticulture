@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worlds.Plugins.MotherNature
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio.Synth", "Audio\Synth\Audio.Synth.csproj", "{EF3C7746-19BE-4448-8930-3CABE899C921}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio.Synth.UI", "Audio\Synth\UI\Audio.Synth.UI.csproj", "{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{EF3C7746-19BE-4448-8930-3CABE899C921}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EF3C7746-19BE-4448-8930-3CABE899C921}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EF3C7746-19BE-4448-8930-3CABE899C921}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

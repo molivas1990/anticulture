@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF3C7746-19BE-4448-8930-3CABE899C921}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{ED66EBCF-B111-4444-94D9-6F5AFD94BC2F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AntiCulture.Audio.Synth</RootNamespace>
-    <AssemblyName>Audio.Synth</AssemblyName>
+    <RootNamespace>AntiCulture.Audio.Synth.UI</RootNamespace>
+    <AssemblyName>Audio.Synth.UI</AssemblyName>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
@@ -37,15 +37,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Slot.cs" />
-    <Compile Include="SoundBuffer.cs" />
-    <Compile Include="Devices\OpenAlOutput.cs" />
-    <Compile Include="Device.cs" />
-    <Compile Include="InputSlot.cs" />
-    <Compile Include="OutputSlot.cs">
-      <SubType>Code</SubType>
+    <Compile Include="DeviceInfoForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Devices\SimpleWaveGenerator.cs" />
+    <Compile Include="DeviceInfoForm.Designer.cs">
+      <DependentUpon>DeviceInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceListForm.Designer.cs">
+      <DependentUpon>DeviceListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeviceInfoForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DeviceInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceListForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DeviceListForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Audio.Synth.csproj">
+      <Project>{EF3C7746-19BE-4448-8930-3CABE899C921}</Project>
+      <Name>Audio.Synth</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

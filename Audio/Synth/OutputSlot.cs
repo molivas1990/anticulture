@@ -33,7 +33,7 @@ namespace AntiCulture.Audio.Synth
         private Device mOwner;
         private string mName;
         private Type mDataType;
-        protected InputSlot mEndPoint;
+        private InputSlot mEndPoint;
         #endregion
 
         #region Events
@@ -42,12 +42,20 @@ namespace AntiCulture.Audio.Synth
         #endregion
 
         #region Constructor
-        private OutputSlot(Device owner, string name, Type dataType)
+        public OutputSlot(Device owner, string name, Type dataType)
         {
             mOwner = owner;
             mName = name;
             mDataType = dataType;
         }
+
+        public OutputSlot(string name, Type dataType)
+            : this(null, name, dataType)
+        {}
+
+        public OutputSlot(string name)
+            : this(name, null)
+        {}
 
         public static OutputSlot Create<T>(Device owner, string name)
         {
@@ -56,11 +64,16 @@ namespace AntiCulture.Audio.Synth
 
         public static OutputSlot Create<T>(string name)
         {
-            return new OutputSlot(null, name, typeof(T));
+            return new OutputSlot(name, typeof(T));
         }
         #endregion
 
         #region Properties
+        public bool HasOwner
+        {
+            get { return mOwner != null; }
+        }
+
         public Device Owner
         {
             get { return mOwner; }
@@ -69,6 +82,11 @@ namespace AntiCulture.Audio.Synth
         public string Name
         {
             get { return mName; }
+        }
+
+        public bool HasDataTypeConstrain
+        {
+            get { return mDataType != null; }
         }
 
         public Type DataType
@@ -90,10 +108,8 @@ namespace AntiCulture.Audio.Synth
             }
             set
             {
-                if (value == mEndPoint) return;
-                if (IsConnected) mEndPoint.MakeDisconnected();
-                mEndPoint = value;
-                if (mEndPoint != null) mEndPoint.MakeConnected(this);
+                if (value == null) Disconnect();
+                else Connect(value);
             }
         }
         #endregion
@@ -101,17 +117,33 @@ namespace AntiCulture.Audio.Synth
         #region Methods
         public void Connect(InputSlot endPoint)
         {
+            if (endPoint == null) throw new ArgumentNullException("endPoint");
+            if (endPoint == mEndPoint) return;
+            if (IsConnected)
+            {
+                mEndPoint.MakeDisconnected();
+                mEndPoint = null;
+                if (Disconnected != null) Disconnected(this, EventArgs.Empty);
+            }
+            if (endPoint.HasDataTypeConstrain && endPoint.DataType != mDataType)
+                throw new InvalidOperationException("Uncompatible slot data types");
             mEndPoint = endPoint;
+            mEndPoint.MakeConnected(this);
         }
 
         public void Disconnect()
         {
-            mEndPoint = null;
+            if (IsConnected)
+            {
+                mEndPoint.MakeDisconnected();
+                mEndPoint = null;
+                if (Disconnected != null) Disconnected(this, EventArgs.Empty);
+            }
         }
 
         public void Send(object data)
         {
-            if (data.GetType() != mDataType) throw new ArgumentException("Invalid data type", "data");
+            if (mDataType != null && data.GetType() != mDataType) throw new ArgumentException("Invalid data type", "data");
             if (IsConnected) mEndPoint.Receive(data);
         }
 

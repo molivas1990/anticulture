@@ -7,25 +7,14 @@ namespace AntiCulture.Audio.Synth
 {
     public abstract class Device
     {
-        #region Data members
-        private string mName;
+        #region Fields
         private string mLabel;
         private List<InputSlot> mInputSlots = new List<InputSlot>();
         private List<OutputSlot> mOutputSlots = new List<OutputSlot>();
         #endregion
 
-        #region Constructor
-        public Device(string name)
-        {
-            mName = name;
-        }
-        #endregion
-
         #region Properties
-        public string Name
-        {
-            get { return mName; }
-        }
+        public abstract string Name { get; }
 
         public string Label
         {
@@ -69,6 +58,14 @@ namespace AntiCulture.Audio.Synth
         protected void AddOutputSlot(OutputSlot slot)
         {
             mOutputSlots.Add(slot);
+        }
+        #endregion
+
+        #region System.Object methods
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(mLabel)) return Name;
+            return mLabel;
         }
         #endregion
     }

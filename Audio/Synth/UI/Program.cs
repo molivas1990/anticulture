@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
-namespace AntiCulture.Audio.Synth
+namespace AntiCulture.Audio.Synth.UI
 {
     public static class Program
     {
         public static void Main()
         {
-            Devices.OpenAlOutput outputDevice = new Devices.OpenAlOutput();
-            Devices.SimpleWaveGenerator waveGeneratorDevice = new Devices.SimpleWaveGenerator();
-            waveGeneratorDevice.OutputSlot.Connect(outputDevice.LeftChannelInputSlot);
+            Application.EnableVisualStyles();
+            Application.Run(new DeviceListForm());
 
+            /*
             Console.WriteLine("Welcome to AntiCulture.Audio.Synth's grand debuts!");
 
             while (true)
@@ -34,7 +35,7 @@ namespace AntiCulture.Audio.Synth
                 waveGeneratorDevice.Generate(type, 1024 * 20, 24000);
 
                 System.Threading.Thread.Sleep(1000);
-            }
+            }*/
         }
     }
 }

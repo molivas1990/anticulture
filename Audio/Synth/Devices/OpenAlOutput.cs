@@ -141,12 +141,11 @@ namespace AntiCulture.Audio.Synth.Devices
 
         #region Constructor
         public OpenAlOutput()
-            : base("OpenAl Output")
         {
             // Initialize slots
-            mLeftChannelInputSlot = InputSlot.Create<SoundBuffer>(this, "iLeftChannel");
+            mLeftChannelInputSlot = InputSlot.Create<SoundBuffer>(this, "LeftChannel");
             mLeftChannelInputSlot.DataReceived += new EventHandler<InputSlot.DataEventArgs>(DataReceived);
-            mRightChannelInputSlot = InputSlot.Create<SoundBuffer>(this, "iRightChannel");
+            mRightChannelInputSlot = InputSlot.Create<SoundBuffer>(this, "RightChannel");
             mRightChannelInputSlot.DataReceived += new EventHandler<InputSlot.DataEventArgs>(DataReceived);
             base.AddInputSlot(mLeftChannelInputSlot);
             base.AddInputSlot(mRightChannelInputSlot);
@@ -211,6 +210,13 @@ namespace AntiCulture.Audio.Synth.Devices
             OpenAl.alSourcePlay(mSourceIdentifier);
 
             mCurrentBuffer = (mCurrentBuffer + 1) % (uint)mBufferIdentifiers.Length;
+        }
+        #endregion
+
+        #region Device members
+        public override string Name
+        {
+            get { return "OpenAl Output"; }
         }
         #endregion
     }
