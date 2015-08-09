@@ -1,0 +1,1 @@
+A **Human** is a type of [species](Species.md).

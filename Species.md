@@ -1,0 +1,1 @@
+**Species** are living [entities](Entity.md) which can use [operators](Operator.md).

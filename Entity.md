@@ -1,0 +1,1 @@
+An **entity** is an object which can be used by [Operators](Operator.md). Some **entities** can be alive such as [Humans](Human.md).

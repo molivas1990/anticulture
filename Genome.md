@@ -1,0 +1,1 @@
+Genomes are used to store [genes](Gene.md). Each living [entity](Entity.md) has a genome. The genome is mutated altered by reproduction which means the float numbers in [genes](Gene.md) are slightly randomly altered.
