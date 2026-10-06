@@ -287,7 +287,7 @@ namespace AntiCulture.Worlds
                 {
                     try
                     {
-                        Species species = SimpleSpecies.FromFile("species\\" + arguments[0] + ".ssd");
+                        Species species = SimpleSpecies.FromFile(System.IO.Path.Combine("species", arguments[0] + ".ssd"));
                         if (mWorld.Encyclopedia.FindSpecies(species.Name) != null)
                         {
                             Console.WriteLine("Species \"" + species.Name + "\" already exists");
@@ -325,8 +325,15 @@ namespace AntiCulture.Worlds
                             if (mWorld.Encyclopedia.FindSpecies(speciesName) != null)
                                 continue;
 
-                            Species species = SimpleSpecies.FromFile(arguments[0] + "\\" + File.Name);
-                            mWorld.Encyclopedia.Species.Add(species);
+                            try
+                            {
+                                Species species = SimpleSpecies.FromFile(System.IO.Path.Combine(arguments[0], File.Name));
+                                mWorld.Encyclopedia.Species.Add(species);
+                            }
+                            catch (Exception fileError)
+                            {
+                                Console.WriteLine("Failed to load species \"" + speciesName + "\" : " + fileError.Message);
+                            }
                         }
                         uint count = (arguments.Length == 2) ? uint.Parse(arguments[1]) : 1;
                         Console.WriteLine("Species successfully loaded from folder");
