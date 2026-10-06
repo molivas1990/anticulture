@@ -11,6 +11,7 @@ namespace AntiCulture.Worlds
         private World mWorld = new World();
         private Timer mTimer = new Timer();
         private Random mRandom = new Random();
+        private Abundance mAbundance = new Abundance();
         private List<Plugin> mPlugins = new List<Plugin>();
         private List<Human> mTrackedHumans = new List<Human>();
         #endregion
@@ -20,16 +21,17 @@ namespace AntiCulture.Worlds
         {
             Encyclopedia encyclopedia = new Encyclopedia();
 
-            // Register species
+            // Register species. Food, water, and plants stay in the
+            // encyclopedia even when the species folder is missing.
             encyclopedia.Species.Add(Human.Species);
+            encyclopedia.Species.Add(Entities.Steak.Species);
+            encyclopedia.Species.Add(Entities.Apple.Species);
+            encyclopedia.Species.Add(Entities.Water.Species);
+            encyclopedia.Species.Add(Entities.Rock.Species);
+            encyclopedia.Species.Add(Entities.Tree.Species);
+            encyclopedia.Species.Add(Entities.HealingPlant.Species);
 
-            //encyclopedia.Species.Add(Entities.Steak.Species);
-            //encyclopedia.Species.Add(Entities.Apple.Species);
-            //encyclopedia.Species.Add(Entities.Water.Species);
-            //encyclopedia.Species.Add(Entities.Rock.Species);
-            //encyclopedia.Species.Add(Entities.Tree.Species);
             //encyclopedia.Species.Add(Entities.Vomit.Species);
-            //encyclopedia.Species.Add(Entities.HealingPlant.Species);
             //encyclopedia.Species.Add(Entities.Feces.Species);
             //encyclopedia.Species.Add(Entities.Urine.Species);
 
@@ -54,6 +56,9 @@ namespace AntiCulture.Worlds
 
             //Execute autoexec.cfg
             RunBatchFile("autoexec.cfg");
+
+            // Top the meadow up in case autoexec asked for less than the minimums.
+            mAbundance.Fill(mWorld, mRandom);
         }
         #endregion
 
@@ -91,6 +96,7 @@ namespace AntiCulture.Worlds
 
                     // Update world
                     mWorld.Update(mTimer, mRandom);
+                    mAbundance.Update(mWorld, mTimer, mRandom);
 
                     // Update plugins
                     for (int i = 0; i < mPlugins.Count; )
@@ -215,7 +221,7 @@ namespace AntiCulture.Worlds
                             for (uint i = 0; i < count; ++i)
                             {
                                 Entity entity = species.Factory(mWorld);
-                                entity.Position = new Vector((float)mRandom.NextDouble() * 20.0f - 10.0f, (float)mRandom.NextDouble() * 20.0f - 10.0f);
+                                entity.Position = Abundance.Scatter(mRandom);
                                 mWorld.Entities.Add(entity);
                             }
                             Console.WriteLine("Added " + count + " instance(s) of species \"" + arguments[0] + "\"");
@@ -262,7 +268,7 @@ namespace AntiCulture.Worlds
                         {
                             Entity entity = species.Factory(mWorld);
                             entity.InstanceName = arguments[i];
-                            entity.Position = new Vector((float)mRandom.NextDouble() * 20.0f - 10.0f, (float)mRandom.NextDouble() * 20.0f - 10.0f);
+                            entity.Position = Abundance.Scatter(mRandom);
                             mWorld.Entities.Add(entity);
                         }
                         Console.WriteLine("Added " + (arguments.Length-1).ToString() + " instance(s) of species \"" + arguments[0] + "\"");
@@ -281,8 +287,15 @@ namespace AntiCulture.Worlds
                 {
                     try
                     {
-                        Species species = SimpleSpecies.FromFile("species\\" + arguments[0] + ".ssd");
-                        mWorld.Encyclopedia.Species.Add(species);
+                        Species species = SimpleSpecies.FromFile(System.IO.Path.Combine("species", arguments[0] + ".ssd"));
+                        if (mWorld.Encyclopedia.FindSpecies(species.Name) != null)
+                        {
+                            Console.WriteLine("Species \"" + species.Name + "\" already exists");
+                        }
+                        else
+                        {
+                            mWorld.Encyclopedia.Species.Add(species);
+                        }
                         uint count = (arguments.Length == 2) ? uint.Parse(arguments[1]) : 1;
                         Console.WriteLine("Species successfully loaded");
                     }
@@ -308,8 +321,19 @@ namespace AntiCulture.Worlds
                         System.IO.DirectoryInfo MyDirectory = new System.IO.DirectoryInfo(arguments[0]);
                         foreach (System.IO.FileInfo File in MyDirectory.GetFiles("*.ssd"))
                         {
-                            Species species = SimpleSpecies.FromFile(arguments[0] + "\\" + File.Name);
-                            mWorld.Encyclopedia.Species.Add(species);
+                            string speciesName = System.IO.Path.GetFileNameWithoutExtension(File.Name);
+                            if (mWorld.Encyclopedia.FindSpecies(speciesName) != null)
+                                continue;
+
+                            try
+                            {
+                                Species species = SimpleSpecies.FromFile(System.IO.Path.Combine(arguments[0], File.Name));
+                                mWorld.Encyclopedia.Species.Add(species);
+                            }
+                            catch (Exception fileError)
+                            {
+                                Console.WriteLine("Failed to load species \"" + speciesName + "\" : " + fileError.Message);
+                            }
                         }
                         uint count = (arguments.Length == 2) ? uint.Parse(arguments[1]) : 1;
                         Console.WriteLine("Species successfully loaded from folder");

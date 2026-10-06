@@ -22,7 +22,7 @@ namespace AntiCulture.Worlds.Entities
         public Water()
             : base(Species)
         {
-            Integrity = 1.0f;
+            Integrity = 20.0f;
         }
     }
 }

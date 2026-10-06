@@ -13,6 +13,7 @@ namespace AntiCulture.Worlds.Entities
         {
             Species = new Species("healingplant", "srabis", Factory);
             Species.Properties["weight"] = 1.0f;
+            Species.Properties["anchored"] = 1.0f;
             Species.Properties["nutrition"] = 0.1f;
             Species.Properties["healing"] = 0.2f;
             Species.Properties["hydration"] = 0.02f;

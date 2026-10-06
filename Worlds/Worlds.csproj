@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abundance.cs" />
     <Compile Include="Encyclopedia.cs" />
     <Compile Include="Entities\Apple.cs" />
     <Compile Include="Entities\Feces.cs" />
