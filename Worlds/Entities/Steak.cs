@@ -21,6 +21,10 @@ namespace AntiCulture.Worlds.Entities
         private static Entity Factory(World world) { return new Steak(); }
         #endregion
 
-        public Steak() : base(Species) { }
+        public Steak()
+            : base(Species)
+        {
+            Integrity = 6.0f;
+        }
     }
 }
